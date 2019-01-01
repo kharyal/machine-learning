@@ -1,0 +1,16 @@
+clear;
+sz=4;
+x=rand(sz,1).*1000;
+y=sqrt(sqrt(x)).*100+rand(sz,1).*50+ones(sz,1).*2000;
+plot(x,y,'o');
+hold on;
+x=[ones(sz,1),x,sqrt(x)];
+theta=[0;0;0;0];
+regularise=ones(1,10);
+regularise=diag(regularise);
+regularise(1)=0;
+theta=pinv(x'*x)*x'*y;
+temp2=[1:1000]';
+temp=[ones(1000,1),temp2,sqrt(temp2)];
+ans=temp*theta;
+plot(temp2,ans);

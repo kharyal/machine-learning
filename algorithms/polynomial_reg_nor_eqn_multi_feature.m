@@ -1,0 +1,13 @@
+clear;
+sz=100;
+x=rand(sz,1).*100;
+y=sqrt(sqrt(x)).*100+rand(sz,1).*50;
+plot(x,y,'o');
+hold on;
+x=[ones(sz,1),x,sqrt(x)];
+theta=[0;0;0];
+theta=pinv(x'*x)*x'*y;
+temp2=[0:sz-1];
+temp=[ones(sz,1),temp2',sqrt(temp2')];
+ans=temp*theta;
+plot(temp2,ans);
